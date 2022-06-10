@@ -456,7 +456,7 @@
   },
   {
     "__type__": "cc.Node",
-    "_name": "Button",
+    "_name": "Button_quit",
     "_objFlags": 0,
     "_parent": {
       "__id__": 7
@@ -482,7 +482,7 @@
     "_lpos": {
       "__type__": "cc.Vec3",
       "x": 0,
-      "y": 0,
+      "y": -300,
       "z": 0
     },
     "_lrot": {
@@ -1039,6 +1039,13 @@
     },
     "nd_touch": {
       "__id__": 10
+    },
+    "nd_scene": {
+      "__id__": 1
+    },
+    "pb_brick": {
+      "__uuid__": "980563dc-6276-48f2-b542-8b12cabc771e",
+      "__expectedType__": "cc.Prefab"
     },
     "_id": "91RMFNSpVACJ6iQQ8UnFvd"
   },

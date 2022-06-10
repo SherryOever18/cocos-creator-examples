@@ -1,5 +1,5 @@
 // GameMgr.ts
-import { _decorator, Component, Node, log, Label, EventTouch } from 'cc';
+import { _decorator, Component, Node, log, Label, EventTouch, Prefab, v3, instantiate, math } from 'cc';
 const { ccclass, property } = _decorator;
 
 export enum EGameStatus {
@@ -20,14 +20,25 @@ export class GameMgr extends Component {
     @property(Node)
     nd_touch: Node = null!
 
+    // 场景节点
+    @property(Node)
+    nd_scene: Node = null!
+
+    // 砖块预制体
+    @property(Prefab)
+    pb_brick: Prefab = null!
+
+    // 下个砖块位置
+    private _nextBrickPos = v3()
+
 
     private _gameStatus: EGameStatus = EGameStatus.wait;
     set gameStatus(status: EGameStatus) {
         switch (status) {
             case EGameStatus.wait: {
                 log('等待')
-                //todo 生成砖块
-                this.scheduleOnce(() => { this.gameStatus = EGameStatus.idle }, 1)
+                this.createBrick()
+                this.scheduleOnce(() => { this.gameStatus = EGameStatus.idle }, 0.2)
                 break;
             }
             case EGameStatus.idle: {
@@ -57,6 +68,7 @@ export class GameMgr extends Component {
     }
 
     start() {
+        this._nextBrickPos.set(0, 0, 0)
         // 初始化状态
         this.gameStatus = EGameStatus.wait
         //注册触摸事件
@@ -74,6 +86,15 @@ export class GameMgr extends Component {
         if (this.gameStatus == EGameStatus.start_jump) {
             this.gameStatus = EGameStatus.jumping
         }
+    }
+
+    // 生成砖块
+    private createBrick() {
+        const brick = instantiate(this.pb_brick)
+        this.nd_scene.addChild(brick)
+        brick.setPosition(this._nextBrickPos)
+        // 随机下一个位置
+        this._nextBrickPos.add3f(0, 0, math.randomRange(-3, -1))
     }
 
     update(deltaTime: number) {
