@@ -28,12 +28,19 @@ export class GameMgr extends Component {
     @property(Prefab)
     pb_brick: Prefab = null!
 
+    // 砖块预制体
+    @property(Prefab)
+    pb_role: Prefab = null!
+
     // 相机
     @property(Camera)
     camera: Camera = null!
 
     // 所有砖块
     private _allbricks: Node[] = []
+
+    // 角色
+    private _role: Node
 
     private _gameStatus: EGameStatus = EGameStatus.wait;
     set gameStatus(status: EGameStatus) {
@@ -74,6 +81,8 @@ export class GameMgr extends Component {
     start() {
         // 先创建一个砖块
         this.createBrick()
+        // 初始化角色
+        this.initRole()
         // 初始化状态
         this.gameStatus = EGameStatus.wait
         //注册触摸事件
@@ -90,6 +99,18 @@ export class GameMgr extends Component {
     private onTouchEnd(evt: EventTouch) {
         if (this.gameStatus == EGameStatus.start_jump) {
             this.gameStatus = EGameStatus.jumping
+        }
+    }
+
+    // 初始化角色
+    private initRole() {
+        this._role = instantiate(this.pb_role)
+        this.nd_scene.addChild(this._role)
+        // 获取第一个砖头
+        const firstBrick = this._allbricks[0];
+        if (firstBrick) {
+            const firstPos = firstBrick.getPosition()
+            this._role.setPosition(firstPos.x, 0.5, firstPos.z)
         }
     }
 

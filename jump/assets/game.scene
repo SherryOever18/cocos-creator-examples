@@ -1047,6 +1047,10 @@
       "__uuid__": "980563dc-6276-48f2-b542-8b12cabc771e",
       "__expectedType__": "cc.Prefab"
     },
+    "pb_role": {
+      "__uuid__": "14053e3a-b5d7-41c5-b176-701d763d77d1",
+      "__expectedType__": "cc.Prefab"
+    },
     "camera": {
       "__id__": 6
     },
