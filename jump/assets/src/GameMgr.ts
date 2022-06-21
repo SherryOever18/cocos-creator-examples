@@ -42,6 +42,9 @@ export class GameMgr extends Component {
     // 角色
     private _role: Node
 
+    // 跳跃时间
+    private _jumpingTime: number = 0
+
     private _gameStatus: EGameStatus = EGameStatus.wait;
     set gameStatus(status: EGameStatus) {
         switch (status) {
@@ -58,12 +61,14 @@ export class GameMgr extends Component {
             }
             case EGameStatus.start_jump: {
                 log('起跳')
+                this._jumpingTime = Date.now()
                 break;
             }
             case EGameStatus.jumping: {
                 log('跳动')
-                //todo 判断死亡或继续
-                this.scheduleOnce(() => { this.gameStatus = EGameStatus.wait }, 1)
+                this._jumpingTime = Date.now() - this._jumpingTime
+                // 移动角色
+                this.moveRole()
                 break;
             }
             case EGameStatus.die: {
@@ -161,6 +166,35 @@ export class GameMgr extends Component {
         tween(this.camera.node)
             .to(0.2, { position: cameraTargetPos }, { easing: 'sineOutIn' })
             .call(() => { this.camera.node.lookAt(midPos) })
+            .start()
+    }
+
+    //移动角色
+    private moveRole() {
+        // 限制在100-3000毫秒内
+        this._jumpingTime = math.clamp(this._jumpingTime, 100, 3000)
+
+        // 移动方向
+        const moveDir = v3()
+        const length_bricks = this._allbricks.length
+        if (length_bricks > 1) {
+            // 最后两个间的向量归一化
+            Vec3.subtract(moveDir,
+                this._allbricks[length_bricks - 1].position,
+                this._allbricks[length_bricks - 2].position)
+                .normalize()
+        }
+
+        // 根据时间算移动的距离
+        moveDir.multiplyScalar(this._jumpingTime / 1000 * 6)
+
+        tween(this._role)
+            .by(0.5, { position: moveDir })
+            .delay(0.1)
+            .call(() => {
+                // todo 判断死亡或继续
+                this.gameStatus = EGameStatus.wait
+            })
             .start()
     }
 
