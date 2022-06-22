@@ -1,5 +1,6 @@
 // GameMgr.ts
-import { _decorator, Component, Node, log, Label, EventTouch, Prefab, v3, instantiate, math, Camera, Vec3, tween } from 'cc';
+import { _decorator, Component, Node, log, Label, EventTouch, Prefab, v3, instantiate, math, Camera, Vec3, tween, game, Vec2, v2 } from 'cc';
+import { EnumEventDefine } from './EeventDefine';
 const { ccclass, property } = _decorator;
 
 export enum EGameStatus {
@@ -73,6 +74,7 @@ export class GameMgr extends Component {
             }
             case EGameStatus.die: {
                 log('死亡')
+                game.emit(EnumEventDefine.openResultView)
                 break;
             }
         }
@@ -192,8 +194,23 @@ export class GameMgr extends Component {
             .by(0.5, { position: moveDir })
             .delay(0.1)
             .call(() => {
-                // todo 判断死亡或继续
-                this.gameStatus = EGameStatus.wait
+                // 获取最后一个砖头
+                const lastBrick = this._allbricks[this._allbricks.length - 1];
+                if (lastBrick) {
+                    //计算在xoz投影的坐标
+                    const roleXOZPos = v2(this._role.position.x, this._role.position.z)
+                    const brickXOZPos = v2(lastBrick.position.x, lastBrick.position.z)
+                    // 计算水平距离差
+                    const distance = Vec2.distance(roleXOZPos, brickXOZPos)
+                    if (distance < 0.5) {
+                        // 距离小于内 成功
+                        this.gameStatus = EGameStatus.wait
+                    } else {
+                        this.gameStatus = EGameStatus.die
+                    }
+                } else {
+                    this.gameStatus = EGameStatus.die
+                }
             })
             .start()
     }
