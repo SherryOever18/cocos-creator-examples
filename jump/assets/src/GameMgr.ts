@@ -1,6 +1,7 @@
 // GameMgr.ts
 import { _decorator, Component, Node, log, Label, EventTouch, Prefab, v3, instantiate, math, Camera, Vec3, tween, game, Vec2, v2 } from 'cc';
 import { EnumEventDefine } from './EeventDefine';
+import { GameViewCtl } from './GameViewCtl';
 const { ccclass, property } = _decorator;
 
 export enum EGameStatus {
@@ -13,6 +14,10 @@ export enum EGameStatus {
 
 @ccclass('GameMgr')
 export class GameMgr extends Component {
+
+    @property(GameViewCtl)
+    gameviewCtl: GameViewCtl = null!
+
     // 用于调试
     @property(Label)
     private lb_debug: Label = null!
@@ -86,6 +91,7 @@ export class GameMgr extends Component {
     }
 
     start() {
+        this.gameviewCtl.score = 0
         // 先创建一个砖块
         this.createBrick()
         // 初始化角色
@@ -205,6 +211,7 @@ export class GameMgr extends Component {
                     if (distance < 0.5) {
                         // 距离小于内 成功
                         this.gameStatus = EGameStatus.wait
+                        this.gameviewCtl.score++;
                     } else {
                         this.gameStatus = EGameStatus.die
                     }
