@@ -1,6 +1,7 @@
 // GameMgr.ts
 import { _decorator, Component, Node, log, Label, EventTouch, Prefab, v3, instantiate, math, Camera, Vec3, tween, game, Vec2, v2 } from 'cc';
 import { EnumEventDefine } from './EeventDefine';
+import { GameConst } from './GameConst';
 import { GameViewCtl } from './GameViewCtl';
 const { ccclass, property } = _decorator;
 
@@ -134,8 +135,7 @@ export class GameMgr extends Component {
         const lastBrick = this._allbricks[this._allbricks.length - 1];
         if (lastBrick) {
             nextBrickPos.set(lastBrick.position)
-
-            const movestep = math.randomRange(-6, -1)
+            const movestep = math.randomRange(-GameConst.maxBrickSpace, -GameConst.minBrickSpace)
             // 随机往 x,z 轴
             if (Math.random() < 0.5) {
                 nextBrickPos.add3f(0, 0, movestep)
@@ -158,7 +158,7 @@ export class GameMgr extends Component {
     private moveCamera() {
         const midPos = v3()
         // 相机投影在xoz面的朝向方向
-        const cameraXOZforward = v3(-1, 0, -1).normalize()
+        const cameraXOZforward = GameConst.cameraXOZforward.clone()
         const length_bricks = this._allbricks.length
         if (length_bricks > 1) {
             // 中间位置，取最后两个
@@ -168,9 +168,9 @@ export class GameMgr extends Component {
                 .multiplyScalar(0.5)
         }
         // 相机投影在xoz面投影点
-        const cameraXOZpos = Vec3.subtract(v3(), midPos, cameraXOZforward.multiplyScalar(15))
+        const cameraXOZpos = Vec3.subtract(v3(), midPos, cameraXOZforward.multiplyScalar(GameConst.cameraHorizontalDistance))
         // 相机的目标位置
-        const cameraTargetPos = Vec3.add(v3(), cameraXOZpos, v3(0, 10, 0))
+        const cameraTargetPos = Vec3.add(v3(), cameraXOZpos, v3(0, GameConst.cameraVerticallDistance, 0))
         tween(this.camera.node)
             .to(0.2, { position: cameraTargetPos }, { easing: 'sineOutIn' })
             .call(() => { this.camera.node.lookAt(midPos) })
@@ -194,7 +194,7 @@ export class GameMgr extends Component {
         }
 
         // 根据时间算移动的距离
-        moveDir.multiplyScalar(this._jumpingTime / 1000 * 6)
+        moveDir.multiplyScalar(this._jumpingTime / 1000 * GameConst.maxBrickSpace)
 
         tween(this._role)
             .by(0.5, { position: moveDir })
