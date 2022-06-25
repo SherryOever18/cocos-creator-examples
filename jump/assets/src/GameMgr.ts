@@ -1,5 +1,6 @@
 // GameMgr.ts
 import { _decorator, Component, Node, log, Label, EventTouch, Prefab, v3, instantiate, math, Camera, Vec3, tween, game, Vec2, v2 } from 'cc';
+import { BrickItem } from './BrickItem';
 import { EnumEventDefine } from './EeventDefine';
 import { GameConst } from './GameConst';
 import { GameViewCtl } from './GameViewCtl';
@@ -85,6 +86,7 @@ export class GameMgr extends Component {
             }
         }
         this._gameStatus = status;
+        this.playBrickEffect()
         this.lb_debug.string = `gameStatus:${this.gameStatus}`;
     }
     get gameStatus() {
@@ -134,7 +136,7 @@ export class GameMgr extends Component {
         // 获取前一个砖头
         const lastBrick = this._allbricks[this._allbricks.length - 1];
         if (lastBrick) {
-            nextBrickPos.set(lastBrick.position)
+            nextBrickPos.set(lastBrick.position.x, 0, lastBrick.position.z)
             const movestep = math.randomRange(-GameConst.maxBrickSpace, -GameConst.minBrickSpace)
             // 随机往 x,z 轴
             if (Math.random() < 0.5) {
@@ -154,6 +156,28 @@ export class GameMgr extends Component {
         }
     }
 
+    private playBrickEffect() {
+        const status = this._gameStatus
+        // 获取前一个砖头
+        const lastBrick = this._allbricks[this._allbricks.length - 1];
+        // 倒数第二个砖头
+        const seconde2lastBrick = this._allbricks[this._allbricks.length - 2];
+        switch (status) {
+            case EGameStatus.wait: {
+                lastBrick && lastBrick.getComponent(BrickItem).playAppearEffect()
+                break
+            }
+            case EGameStatus.start_jump: {
+                seconde2lastBrick && seconde2lastBrick.getComponent(BrickItem).playClickEffect()
+                break
+            }
+            case EGameStatus.jumping: {
+                seconde2lastBrick && seconde2lastBrick.getComponent(BrickItem).playClickOutEffect()
+                break
+            }
+        }
+    }
+
     //移动相机
     private moveCamera() {
         const midPos = v3()
@@ -167,6 +191,7 @@ export class GameMgr extends Component {
                 this._allbricks[length_bricks - 2].position)
                 .multiplyScalar(0.5)
         }
+        midPos.y = 0
         // 相机投影在xoz面投影点
         const cameraXOZpos = Vec3.subtract(v3(), midPos, cameraXOZforward.multiplyScalar(GameConst.cameraHorizontalDistance))
         // 相机的目标位置
