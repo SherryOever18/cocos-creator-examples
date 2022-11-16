@@ -1,4 +1,4 @@
-import { _decorator, Component, Node, Vec3, v3, math, v2, quat, Quat, input, Input, EventMouse, screen } from 'cc';
+import { _decorator, Component, Node, Vec3, v3, math, v2, quat, Quat, input, Input, EventMouse, screen, Camera } from 'cc';
 import { Spherical } from '../math/Spherical';
 const { ccclass, property } = _decorator;
 
@@ -52,6 +52,17 @@ export class OrbitControls extends Component {
     enableZoom = true;
     zoomSpeed = 1.0;
 
+    // Set to false to disable rotating
+    enableRotate = true;
+    rotateSpeed = 1.0;
+
+    // Set to false to disable panning
+    enablePan = true;
+    panSpeed = 1.0;
+    screenSpacePanning = true; // if false, pan orthogonal to world-space direction camera.up
+    keyPanSpeed = 7.0; // pixels moved per arrow key push
+
+
     // Set to true to automatically rotate around the target
     // If auto-rotate is enabled, you must call controls.update() in your animation loop
     autoRotate = false;
@@ -59,6 +70,7 @@ export class OrbitControls extends Component {
 
 
     private object: Node
+    private camera: Camera
     private state = STATE.NONE;
     // current position in spherical coordinates
     private readonly spherical = new Spherical();
@@ -81,6 +93,7 @@ export class OrbitControls extends Component {
 
     onLoad() {
         this.object = this.node;
+        this.camera = this.node.getComponent(Camera);
     }
 
     start() {
@@ -107,7 +120,6 @@ export class OrbitControls extends Component {
 
 
     private onMouseDown(event: EventMouse) {
-        // input.on(Input.EventType.MOUSE_MOVE, this.onMouseMove, this);
 
     }
 
@@ -124,6 +136,8 @@ export class OrbitControls extends Component {
         const rotateDelta = this.rotateDelta
         const clientHeight = screen.windowSize.height
         event.getDelta(rotateDelta)
+        this.rotateDelta.multiplyScalar(this.rotateSpeed)
+
         this.rotateLeft(2 * Math.PI * rotateDelta.x / clientHeight); // yes, height
 
         this.rotateUp(-2 * Math.PI * rotateDelta.y / clientHeight);
@@ -135,11 +149,85 @@ export class OrbitControls extends Component {
     private onMouseMove(event: EventMouse) {
         // console.log("onMouseMove", event.getButton())
         switch (event.getButton()) {
-            case EventMouse.BUTTON_LEFT: {
+            case EventMouse.BUTTON_RIGHT: {
                 this.handleMouseMoveRotate(event);
                 break;
             }
+            case EventMouse.BUTTON_MIDDLE: {
+                this.handleMouseMovePan(event);
+                break;
+            }
         }
+    }
+
+    private panLeft(distance) {
+
+        //v.setFromMatrixColumn(objectMatrix, 0); // get X column of objectMatrix
+        const v = this.object.right
+        v.multiplyScalar(- distance);
+        this.panOffset.add(v);
+
+    };
+
+    private panUp(distance) {
+
+        // if (scope.screenSpacePanning === true) {
+
+        // v.setFromMatrixColumn(objectMatrix, 1);
+
+        // } else {
+
+        //     v.setFromMatrixColumn(objectMatrix, 0);
+        //     v.crossVectors(scope.object.up, v);
+
+        // }
+        const v = this.object.up
+        v.multiplyScalar(-distance);
+        this.panOffset.add(v);
+
+    };
+
+    private pan(deltaX, deltaY) {
+        const clientHeight = screen.windowSize.height
+        const scope = this;
+        const offset = this.offset
+        // if (scope.object.isPerspectiveCamera) {
+
+        // perspective
+        const position = scope.object.position;
+        offset.set(position).subtract(scope.target);
+        let targetDistance = offset.length();
+
+        // half of the fov is center to top of screen
+        targetDistance *= Math.tan(scope.camera.fov / 2 * Math.PI / 180.0);
+
+        // we use only clientHeight here so aspect ratio does not distort speed
+        this.panLeft(2 * deltaX * targetDistance / clientHeight);
+        this.panUp(2 * deltaY * targetDistance / clientHeight);
+
+        // } else if (scope.object.isOrthographicCamera) {
+
+        //     // orthographic
+        //     panLeft(deltaX * (scope.object.right - scope.object.left) / scope.object.zoom / element.clientWidth, scope.object.matrix);
+        //     panUp(deltaY * (scope.object.top - scope.object.bottom) / scope.object.zoom / element.clientHeight, scope.object.matrix);
+
+        // } else {
+
+        //     // camera neither orthographic nor perspective
+        //     console.warn('WARNING: OrbitControls.js encountered an unknown camera type - pan disabled.');
+        //     scope.enablePan = false;
+
+        // }
+    }
+
+    private handleMouseMovePan(event: EventMouse) {
+
+
+        event.getDelta(this.panDelta)
+        this.panDelta.multiplyScalar(this.panSpeed)
+        this.pan(this.panDelta.x, this.panDelta.y);
+        this.updateObject();
+
     }
 
     private onMouseWheel(evt: EventMouse) {
