@@ -3,6 +3,7 @@ const { ccclass, property } = _decorator;
 
 import { HTML5 } from 'cc/env';
 import { GUI } from './libs/lil-gui';
+import { SkeletonHelper } from './src/helpers/SkeletonHelper';
 
 
 
@@ -15,6 +16,8 @@ export class webgl_animation_skinning_blending extends Component {
     @property(Camera)
     camera: Camera = null!
 
+    @property(SkeletonHelper)
+    skeletonHelper: SkeletonHelper = null!;
 
     start() {
         if (HTML5) {
@@ -35,16 +38,19 @@ export class webgl_animation_skinning_blending extends Component {
     private createPanel() {
         // @ts-ignore
         const panel = new GUI({ width: 310 });
-        panel.close()
+        // panel.close()
         const crossFadeControls = [];
 
         const folder1 = panel.addFolder('Visibility');
-        const folder2 = panel.addFolder('Activation/Deactivation');
-        const folder3 = panel.addFolder('Pausing/Stepping');
-        const folder4 = panel.addFolder('Crossfading');
-        const folder5 = panel.addFolder('Blend Weights');
-        const folder6 = panel.addFolder('General Speed');
+        // todo
+        // const folder2 = panel.addFolder('Activation/Deactivation');
+        // const folder3 = panel.addFolder('Pausing/Stepping');
+        // const folder4 = panel.addFolder('Crossfading');
+        // const folder5 = panel.addFolder('Blend Weights');
+        // const folder6 = panel.addFolder('General Speed');
+        // todo-end
 
+        this.skeletonHelper.showSkeleton(false)
         let settings = {
             'show model': true,
             'show skeleton': false,
@@ -82,9 +88,14 @@ export class webgl_animation_skinning_blending extends Component {
         };
 
         // @ts-ignore
-        folder1.add(settings, 'show model').onChange(() => { });
+        folder1.add(settings, 'show model').onChange((visibility) => { this.model.active = visibility });
         // @ts-ignore
-        folder1.add(settings, 'show skeleton').onChange(() => { });
+        folder1.add(settings, 'show skeleton').onChange((visibility) => {
+            this.skeletonHelper.showSkeleton(visibility)
+        });
+
+        //todo
+        /**
         // @ts-ignore
         folder2.add(settings, 'deactivate all');
         // @ts-ignore
@@ -123,13 +134,15 @@ export class webgl_animation_skinning_blending extends Component {
         folder6.add(settings, 'modify time scale', 0.0, 1.5, 0.01).onChange(() => {
 
         });
+ */
+        // todo-end
 
         folder1.open();
-        folder2.open();
-        folder3.open();
-        folder4.open();
-        folder5.open();
-        folder6.open();
+        // folder2.open();
+        // folder3.open();
+        // folder4.open();
+        // folder5.open();
+        // folder6.open();
 
     }
 
