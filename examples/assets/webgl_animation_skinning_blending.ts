@@ -1,4 +1,4 @@
-import { _decorator, Component, Node, Camera, v3 } from 'cc';
+import { _decorator, Component, Node, Camera, v3, SkeletalAnimation, AnimationState } from 'cc';
 const { ccclass, property } = _decorator;
 
 import { HTML5 } from 'cc/env';
@@ -25,6 +25,7 @@ export class webgl_animation_skinning_blending extends Component {
             div.id = "info"
             div.className = "footer"
             div.innerHTML = `
+            微信公众号 👉 <a href="https://mp.weixin.qq.com/s/-I6I6nG2Hnk6d1zqR-Gu2g" target="_blank" rel="noopener">白玉无冰</a> <br/>
             (model from <a href="https://www.mixamo.com/" target="_blank" rel="noopener">mixamo.com</a>)<br/>
 			Note: crossfades are possible with blend weights being set to (1,0,0), (0,1,0) or (0,0,1)
             `
@@ -40,22 +41,52 @@ export class webgl_animation_skinning_blending extends Component {
         const panel = new GUI({ width: 310 });
         // panel.close()
         const crossFadeControls = [];
+        const skeletalAnimation = this.model.getComponent(SkeletalAnimation)
+        const idleAction = skeletalAnimation.getState(skeletalAnimation.clips[1].name)
+        const walkAction = skeletalAnimation.getState(skeletalAnimation.clips[0].name)
+        const runAction = skeletalAnimation.getState(skeletalAnimation.clips[2].name)
+        const tposAction = skeletalAnimation.getState(skeletalAnimation.clips[3].name)
+        const actions = [idleAction, walkAction, runAction, tposAction];
+
+        function setWeight(action: AnimationState, weight) {
+            action.weight = weight
+        }
+
+        function activateAll() {
+            setWeight(idleAction, settings['modify idle weight']);
+            setWeight(walkAction, settings['modify walk weight']);
+            setWeight(runAction, settings['modify run weight']);
+            setWeight(tposAction, settings['modify tpos weight']);
+            actions.forEach(function (action) {
+                action.play();
+            });
+        }
 
         const folder1 = panel.addFolder('Visibility');
+        const folder2 = panel.addFolder('Activation/Deactivation');
         // todo
-        // const folder2 = panel.addFolder('Activation/Deactivation');
         // const folder3 = panel.addFolder('Pausing/Stepping');
         // const folder4 = panel.addFolder('Crossfading');
         // const folder5 = panel.addFolder('Blend Weights');
         // const folder6 = panel.addFolder('General Speed');
         // todo-end
-
         this.skeletonHelper.showSkeleton(false)
         let settings = {
             'show model': true,
             'show skeleton': false,
-            'deactivate all': () => { "deactivateAllActions" },
-            'activate all': () => { "activateAllActions" },
+            'deactivate all': () => {
+                // skeletalAnimation.stop()
+                setWeight(idleAction, 0);
+                setWeight(walkAction, 0);
+                setWeight(runAction, 0);
+                setWeight(tposAction, 1);
+                // actions.forEach(function (action) {
+                //     action.stop();
+                // });
+            },
+            'activate all': () => {
+                activateAll()
+            },
             'pause/continue': () => { "pauseContinue" },
             'make single step': () => { "toSingleStepMode" },
             'modify step size': 0.05,
@@ -84,8 +115,12 @@ export class webgl_animation_skinning_blending extends Component {
             'modify idle weight': 0.0,
             'modify walk weight': 1.0,
             'modify run weight': 0.0,
+            'modify tpos weight': 0.0,
             'modify time scale': 1.0
         };
+
+
+        activateAll()
 
         // @ts-ignore
         folder1.add(settings, 'show model').onChange((visibility) => { this.model.active = visibility });
@@ -94,12 +129,13 @@ export class webgl_animation_skinning_blending extends Component {
             this.skeletonHelper.showSkeleton(visibility)
         });
 
-        //todo
-        /**
+
         // @ts-ignore
         folder2.add(settings, 'deactivate all');
         // @ts-ignore
         folder2.add(settings, 'activate all');
+        //todo
+        /**
         // @ts-ignore
         folder3.add(settings, 'pause/continue');
         // @ts-ignore
