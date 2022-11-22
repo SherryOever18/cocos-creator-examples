@@ -37,6 +37,10 @@ export class webgl_animation_skinning_blending extends Component {
     }
 
     private createPanel() {
+
+        let singleStepMode = false;
+        let sizeOfNextStep = 0;
+
         // @ts-ignore
         const panel = new GUI({ width: 310 });
         // panel.close()
@@ -62,10 +66,32 @@ export class webgl_animation_skinning_blending extends Component {
             });
         }
 
+        function pauseAllActions() {
+            actions.forEach(function (action) {
+                action.pause();
+            });
+
+        }
+
+        function unPauseAllActions() {
+            actions.forEach(function (action) {
+                action.resume();
+            });
+        }
+
+        function toSingleStepMode() {
+            pauseAllActions();
+            singleStepMode = true;
+            sizeOfNextStep = settings['modify step size'];
+            actions.forEach(function (action) {
+                action.update(sizeOfNextStep);
+            });
+        }
+
         const folder1 = panel.addFolder('Visibility');
         const folder2 = panel.addFolder('Activation/Deactivation');
+        const folder3 = panel.addFolder('Pausing/Stepping');
         // todo
-        // const folder3 = panel.addFolder('Pausing/Stepping');
         // const folder4 = panel.addFolder('Crossfading');
         // const folder5 = panel.addFolder('Blend Weights');
         // const folder6 = panel.addFolder('General Speed');
@@ -87,8 +113,19 @@ export class webgl_animation_skinning_blending extends Component {
             'activate all': () => {
                 activateAll()
             },
-            'pause/continue': () => { "pauseContinue" },
-            'make single step': () => { "toSingleStepMode" },
+            'pause/continue': () => {
+                if (singleStepMode) {
+                    singleStepMode = false;
+                    unPauseAllActions();
+                } else {
+                    if (idleAction.isPaused) {
+                        unPauseAllActions();
+                    } else {
+                        pauseAllActions();
+                    }
+                }
+            },
+            'make single step': () => { toSingleStepMode() },
             'modify step size': 0.05,
             'from walk to idle': () => {
 
@@ -134,13 +171,14 @@ export class webgl_animation_skinning_blending extends Component {
         folder2.add(settings, 'deactivate all');
         // @ts-ignore
         folder2.add(settings, 'activate all');
-        //todo
-        /**
+
         // @ts-ignore
         folder3.add(settings, 'pause/continue');
         // @ts-ignore
         folder3.add(settings, 'make single step');
         folder3.add(settings, 'modify step size', 0.01, 0.1, 0.001);
+        //todo
+        /**
         // @ts-ignore
         crossFadeControls.push(folder4.add(settings, 'from walk to idle'));
         // @ts-ignore
