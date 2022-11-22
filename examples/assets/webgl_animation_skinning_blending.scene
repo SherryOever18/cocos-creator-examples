@@ -108,8 +108,8 @@
     "_staticSettings": {
       "__id__": 4
     },
-    "_illuminanceHDR": 65000,
-    "_illuminance": 65000,
+    "_illuminanceHDR": 97500,
+    "_illuminance": 97500,
     "_illuminanceLDR": 1.6927083333333335,
     "_shadowEnabled": false,
     "_shadowPcf": 0,
