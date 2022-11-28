@@ -22,16 +22,19 @@
       },
       {
         "__id__": 19
+      },
+      {
+        "__id__": 21
       }
     ],
     "_active": true,
     "_components": [],
     "_prefab": {
-      "__id__": 21
+      "__id__": 23
     },
     "autoReleaseAssets": false,
     "_globals": {
-      "__id__": 163
+      "__id__": 165
     },
     "_id": "54a44e61-b957-4b87-9578-6f7b6a768d4f"
   },
@@ -438,149 +441,205 @@
     "_id": "4bH2BctM5BBL6FrYEWMBZu"
   },
   {
+    "__type__": "cc.Node",
+    "_name": "FooterInfoDivHelper",
+    "_objFlags": 0,
+    "_parent": {
+      "__id__": 1
+    },
+    "_children": [],
+    "_active": true,
+    "_components": [
+      {
+        "__id__": 22
+      }
+    ],
+    "_prefab": null,
+    "_lpos": {
+      "__type__": "cc.Vec3",
+      "x": 0,
+      "y": 0,
+      "z": 0
+    },
+    "_lrot": {
+      "__type__": "cc.Quat",
+      "x": 0,
+      "y": 0,
+      "z": 0,
+      "w": 1
+    },
+    "_lscale": {
+      "__type__": "cc.Vec3",
+      "x": 1,
+      "y": 1,
+      "z": 1
+    },
+    "_layer": 1073741824,
+    "_euler": {
+      "__type__": "cc.Vec3",
+      "x": 0,
+      "y": 0,
+      "z": 0
+    },
+    "_id": "736Hv4SdhE6pmS539+giJP"
+  },
+  {
+    "__type__": "17ea9rDzrtECLriSbDEmaQx",
+    "_name": "",
+    "_objFlags": 0,
+    "node": {
+      "__id__": 21
+    },
+    "_enabled": true,
+    "__prefab": null,
+    "codeAddr": "https://github.com/baiyuwubing/cocos-creator-examples/tree/3.6",
+    "otherInfo": "            Doc: <a href=\"https://mp.weixin.qq.com/s/ACGbuEyssHBTGhZaJ8mRcQ\" target=\"_blank\" rel=\"noopener\">  文章说明  </a>              Video: <a href=\"https://www.bilibili.com/video/BV19W4y1s765\" target=\"_blank\" rel=\"noopener\">  视频讲解  </a> <br/> \t\t\tModel: <a href=\"https://artstation.com/artwork/1AGwX\" target=\"_blank\" rel=\"noopener\">Littlest Tokyo</a> by \t\t\t<a href=\"https://artstation.com/glenatron\" target=\"_blank\" rel=\"noopener\">Glen Fox</a>, CC Attribution.",
+    "_id": "e1Bw7Hi3tJm5/hrlGs3i8s"
+  },
+  {
     "__type__": "cc.PrefabInfo",
     "fileId": "f46876e4-e81b-4931-b493-6d367be385e7",
     "targetOverrides": [
       {
-        "__id__": 22
+        "__id__": 24
       },
       {
-        "__id__": 25
+        "__id__": 27
       },
       {
-        "__id__": 28
+        "__id__": 30
       },
       {
-        "__id__": 31
+        "__id__": 33
       },
       {
-        "__id__": 34
+        "__id__": 36
       },
       {
-        "__id__": 37
+        "__id__": 39
       },
       {
-        "__id__": 40
+        "__id__": 42
       },
       {
-        "__id__": 43
+        "__id__": 45
       },
       {
-        "__id__": 46
+        "__id__": 48
       },
       {
-        "__id__": 49
+        "__id__": 51
       },
       {
-        "__id__": 52
+        "__id__": 54
       },
       {
-        "__id__": 55
+        "__id__": 57
       },
       {
-        "__id__": 58
+        "__id__": 60
       },
       {
-        "__id__": 61
+        "__id__": 63
       },
       {
-        "__id__": 64
+        "__id__": 66
       },
       {
-        "__id__": 67
+        "__id__": 69
       },
       {
-        "__id__": 70
+        "__id__": 72
       },
       {
-        "__id__": 73
+        "__id__": 75
       },
       {
-        "__id__": 76
+        "__id__": 78
       },
       {
-        "__id__": 79
+        "__id__": 81
       },
       {
-        "__id__": 82
+        "__id__": 84
       },
       {
-        "__id__": 85
+        "__id__": 87
       },
       {
-        "__id__": 88
+        "__id__": 90
       },
       {
-        "__id__": 91
+        "__id__": 93
       },
       {
-        "__id__": 94
+        "__id__": 96
       },
       {
-        "__id__": 97
+        "__id__": 99
       },
       {
-        "__id__": 100
+        "__id__": 102
       },
       {
-        "__id__": 103
+        "__id__": 105
       },
       {
-        "__id__": 106
+        "__id__": 108
       },
       {
-        "__id__": 109
+        "__id__": 111
       },
       {
-        "__id__": 112
+        "__id__": 114
       },
       {
-        "__id__": 115
+        "__id__": 117
       },
       {
-        "__id__": 118
+        "__id__": 120
       },
       {
-        "__id__": 121
+        "__id__": 123
       },
       {
-        "__id__": 124
+        "__id__": 126
       },
       {
-        "__id__": 127
+        "__id__": 129
       },
       {
-        "__id__": 130
+        "__id__": 132
       },
       {
-        "__id__": 133
+        "__id__": 135
       },
       {
-        "__id__": 136
+        "__id__": 138
       },
       {
-        "__id__": 139
+        "__id__": 141
       },
       {
-        "__id__": 142
+        "__id__": 144
       },
       {
-        "__id__": 145
+        "__id__": 147
       },
       {
-        "__id__": 148
+        "__id__": 150
       },
       {
-        "__id__": 151
+        "__id__": 153
       },
       {
-        "__id__": 154
+        "__id__": 156
       },
       {
-        "__id__": 157
+        "__id__": 159
       },
       {
-        "__id__": 160
+        "__id__": 162
       }
     ],
     "nestedPrefabInstanceRoots": [
@@ -595,7 +654,7 @@
       "__id__": 8
     },
     "sourceInfo": {
-      "__id__": 23
+      "__id__": 25
     },
     "propertyPath": [
       "_sockets",
@@ -606,7 +665,7 @@
       "__id__": 8
     },
     "targetInfo": {
-      "__id__": 24
+      "__id__": 26
     }
   },
   {
@@ -627,7 +686,7 @@
       "__id__": 8
     },
     "sourceInfo": {
-      "__id__": 26
+      "__id__": 28
     },
     "propertyPath": [
       "_sockets",
@@ -638,7 +697,7 @@
       "__id__": 8
     },
     "targetInfo": {
-      "__id__": 27
+      "__id__": 29
     }
   },
   {
@@ -659,7 +718,7 @@
       "__id__": 8
     },
     "sourceInfo": {
-      "__id__": 29
+      "__id__": 31
     },
     "propertyPath": [
       "_sockets",
@@ -670,7 +729,7 @@
       "__id__": 8
     },
     "targetInfo": {
-      "__id__": 30
+      "__id__": 32
     }
   },
   {
@@ -691,7 +750,7 @@
       "__id__": 8
     },
     "sourceInfo": {
-      "__id__": 32
+      "__id__": 34
     },
     "propertyPath": [
       "_sockets",
@@ -702,7 +761,7 @@
       "__id__": 8
     },
     "targetInfo": {
-      "__id__": 33
+      "__id__": 35
     }
   },
   {
@@ -723,7 +782,7 @@
       "__id__": 8
     },
     "sourceInfo": {
-      "__id__": 35
+      "__id__": 37
     },
     "propertyPath": [
       "_sockets",
@@ -734,7 +793,7 @@
       "__id__": 8
     },
     "targetInfo": {
-      "__id__": 36
+      "__id__": 38
     }
   },
   {
@@ -755,7 +814,7 @@
       "__id__": 8
     },
     "sourceInfo": {
-      "__id__": 38
+      "__id__": 40
     },
     "propertyPath": [
       "_sockets",
@@ -766,7 +825,7 @@
       "__id__": 8
     },
     "targetInfo": {
-      "__id__": 39
+      "__id__": 41
     }
   },
   {
@@ -787,7 +846,7 @@
       "__id__": 8
     },
     "sourceInfo": {
-      "__id__": 41
+      "__id__": 43
     },
     "propertyPath": [
       "_sockets",
@@ -798,7 +857,7 @@
       "__id__": 8
     },
     "targetInfo": {
-      "__id__": 42
+      "__id__": 44
     }
   },
   {
@@ -819,7 +878,7 @@
       "__id__": 8
     },
     "sourceInfo": {
-      "__id__": 44
+      "__id__": 46
     },
     "propertyPath": [
       "_sockets",
@@ -830,7 +889,7 @@
       "__id__": 8
     },
     "targetInfo": {
-      "__id__": 45
+      "__id__": 47
     }
   },
   {
@@ -851,7 +910,7 @@
       "__id__": 8
     },
     "sourceInfo": {
-      "__id__": 47
+      "__id__": 49
     },
     "propertyPath": [
       "_sockets",
@@ -862,7 +921,7 @@
       "__id__": 8
     },
     "targetInfo": {
-      "__id__": 48
+      "__id__": 50
     }
   },
   {
@@ -883,7 +942,7 @@
       "__id__": 8
     },
     "sourceInfo": {
-      "__id__": 50
+      "__id__": 52
     },
     "propertyPath": [
       "_sockets",
@@ -894,7 +953,7 @@
       "__id__": 8
     },
     "targetInfo": {
-      "__id__": 51
+      "__id__": 53
     }
   },
   {
@@ -915,7 +974,7 @@
       "__id__": 8
     },
     "sourceInfo": {
-      "__id__": 53
+      "__id__": 55
     },
     "propertyPath": [
       "_sockets",
@@ -926,7 +985,7 @@
       "__id__": 8
     },
     "targetInfo": {
-      "__id__": 54
+      "__id__": 56
     }
   },
   {
@@ -947,7 +1006,7 @@
       "__id__": 8
     },
     "sourceInfo": {
-      "__id__": 56
+      "__id__": 58
     },
     "propertyPath": [
       "_sockets",
@@ -958,7 +1017,7 @@
       "__id__": 8
     },
     "targetInfo": {
-      "__id__": 57
+      "__id__": 59
     }
   },
   {
@@ -979,7 +1038,7 @@
       "__id__": 8
     },
     "sourceInfo": {
-      "__id__": 59
+      "__id__": 61
     },
     "propertyPath": [
       "_sockets",
@@ -990,7 +1049,7 @@
       "__id__": 8
     },
     "targetInfo": {
-      "__id__": 60
+      "__id__": 62
     }
   },
   {
@@ -1011,7 +1070,7 @@
       "__id__": 8
     },
     "sourceInfo": {
-      "__id__": 62
+      "__id__": 64
     },
     "propertyPath": [
       "_sockets",
@@ -1022,7 +1081,7 @@
       "__id__": 8
     },
     "targetInfo": {
-      "__id__": 63
+      "__id__": 65
     }
   },
   {
@@ -1043,7 +1102,7 @@
       "__id__": 8
     },
     "sourceInfo": {
-      "__id__": 65
+      "__id__": 67
     },
     "propertyPath": [
       "_sockets",
@@ -1054,7 +1113,7 @@
       "__id__": 8
     },
     "targetInfo": {
-      "__id__": 66
+      "__id__": 68
     }
   },
   {
@@ -1075,7 +1134,7 @@
       "__id__": 8
     },
     "sourceInfo": {
-      "__id__": 68
+      "__id__": 70
     },
     "propertyPath": [
       "_sockets",
@@ -1086,7 +1145,7 @@
       "__id__": 8
     },
     "targetInfo": {
-      "__id__": 69
+      "__id__": 71
     }
   },
   {
@@ -1107,7 +1166,7 @@
       "__id__": 8
     },
     "sourceInfo": {
-      "__id__": 71
+      "__id__": 73
     },
     "propertyPath": [
       "_sockets",
@@ -1118,7 +1177,7 @@
       "__id__": 8
     },
     "targetInfo": {
-      "__id__": 72
+      "__id__": 74
     }
   },
   {
@@ -1139,7 +1198,7 @@
       "__id__": 8
     },
     "sourceInfo": {
-      "__id__": 74
+      "__id__": 76
     },
     "propertyPath": [
       "_sockets",
@@ -1150,7 +1209,7 @@
       "__id__": 8
     },
     "targetInfo": {
-      "__id__": 75
+      "__id__": 77
     }
   },
   {
@@ -1171,7 +1230,7 @@
       "__id__": 8
     },
     "sourceInfo": {
-      "__id__": 77
+      "__id__": 79
     },
     "propertyPath": [
       "_sockets",
@@ -1182,7 +1241,7 @@
       "__id__": 8
     },
     "targetInfo": {
-      "__id__": 78
+      "__id__": 80
     }
   },
   {
@@ -1203,7 +1262,7 @@
       "__id__": 8
     },
     "sourceInfo": {
-      "__id__": 80
+      "__id__": 82
     },
     "propertyPath": [
       "_sockets",
@@ -1214,7 +1273,7 @@
       "__id__": 8
     },
     "targetInfo": {
-      "__id__": 81
+      "__id__": 83
     }
   },
   {
@@ -1235,7 +1294,7 @@
       "__id__": 8
     },
     "sourceInfo": {
-      "__id__": 83
+      "__id__": 85
     },
     "propertyPath": [
       "_sockets",
@@ -1246,7 +1305,7 @@
       "__id__": 8
     },
     "targetInfo": {
-      "__id__": 84
+      "__id__": 86
     }
   },
   {
@@ -1267,7 +1326,7 @@
       "__id__": 8
     },
     "sourceInfo": {
-      "__id__": 86
+      "__id__": 88
     },
     "propertyPath": [
       "_sockets",
@@ -1278,7 +1337,7 @@
       "__id__": 8
     },
     "targetInfo": {
-      "__id__": 87
+      "__id__": 89
     }
   },
   {
@@ -1299,7 +1358,7 @@
       "__id__": 8
     },
     "sourceInfo": {
-      "__id__": 89
+      "__id__": 91
     },
     "propertyPath": [
       "_sockets",
@@ -1310,7 +1369,7 @@
       "__id__": 8
     },
     "targetInfo": {
-      "__id__": 90
+      "__id__": 92
     }
   },
   {
@@ -1331,7 +1390,7 @@
       "__id__": 8
     },
     "sourceInfo": {
-      "__id__": 92
+      "__id__": 94
     },
     "propertyPath": [
       "_sockets",
@@ -1342,7 +1401,7 @@
       "__id__": 8
     },
     "targetInfo": {
-      "__id__": 93
+      "__id__": 95
     }
   },
   {
@@ -1363,7 +1422,7 @@
       "__id__": 8
     },
     "sourceInfo": {
-      "__id__": 95
+      "__id__": 97
     },
     "propertyPath": [
       "_sockets",
@@ -1374,7 +1433,7 @@
       "__id__": 8
     },
     "targetInfo": {
-      "__id__": 96
+      "__id__": 98
     }
   },
   {
@@ -1395,7 +1454,7 @@
       "__id__": 8
     },
     "sourceInfo": {
-      "__id__": 98
+      "__id__": 100
     },
     "propertyPath": [
       "_sockets",
@@ -1406,7 +1465,7 @@
       "__id__": 8
     },
     "targetInfo": {
-      "__id__": 99
+      "__id__": 101
     }
   },
   {
@@ -1427,7 +1486,7 @@
       "__id__": 8
     },
     "sourceInfo": {
-      "__id__": 101
+      "__id__": 103
     },
     "propertyPath": [
       "_sockets",
@@ -1438,7 +1497,7 @@
       "__id__": 8
     },
     "targetInfo": {
-      "__id__": 102
+      "__id__": 104
     }
   },
   {
@@ -1459,7 +1518,7 @@
       "__id__": 8
     },
     "sourceInfo": {
-      "__id__": 104
+      "__id__": 106
     },
     "propertyPath": [
       "_sockets",
@@ -1470,7 +1529,7 @@
       "__id__": 8
     },
     "targetInfo": {
-      "__id__": 105
+      "__id__": 107
     }
   },
   {
@@ -1491,7 +1550,7 @@
       "__id__": 8
     },
     "sourceInfo": {
-      "__id__": 107
+      "__id__": 109
     },
     "propertyPath": [
       "_sockets",
@@ -1502,7 +1561,7 @@
       "__id__": 8
     },
     "targetInfo": {
-      "__id__": 108
+      "__id__": 110
     }
   },
   {
@@ -1523,7 +1582,7 @@
       "__id__": 8
     },
     "sourceInfo": {
-      "__id__": 110
+      "__id__": 112
     },
     "propertyPath": [
       "_sockets",
@@ -1534,7 +1593,7 @@
       "__id__": 8
     },
     "targetInfo": {
-      "__id__": 111
+      "__id__": 113
     }
   },
   {
@@ -1555,7 +1614,7 @@
       "__id__": 8
     },
     "sourceInfo": {
-      "__id__": 113
+      "__id__": 115
     },
     "propertyPath": [
       "_sockets",
@@ -1566,7 +1625,7 @@
       "__id__": 8
     },
     "targetInfo": {
-      "__id__": 114
+      "__id__": 116
     }
   },
   {
@@ -1587,7 +1646,7 @@
       "__id__": 8
     },
     "sourceInfo": {
-      "__id__": 116
+      "__id__": 118
     },
     "propertyPath": [
       "_sockets",
@@ -1598,7 +1657,7 @@
       "__id__": 8
     },
     "targetInfo": {
-      "__id__": 117
+      "__id__": 119
     }
   },
   {
@@ -1619,7 +1678,7 @@
       "__id__": 8
     },
     "sourceInfo": {
-      "__id__": 119
+      "__id__": 121
     },
     "propertyPath": [
       "_sockets",
@@ -1630,7 +1689,7 @@
       "__id__": 8
     },
     "targetInfo": {
-      "__id__": 120
+      "__id__": 122
     }
   },
   {
@@ -1651,7 +1710,7 @@
       "__id__": 8
     },
     "sourceInfo": {
-      "__id__": 122
+      "__id__": 124
     },
     "propertyPath": [
       "_sockets",
@@ -1662,7 +1721,7 @@
       "__id__": 8
     },
     "targetInfo": {
-      "__id__": 123
+      "__id__": 125
     }
   },
   {
@@ -1683,7 +1742,7 @@
       "__id__": 8
     },
     "sourceInfo": {
-      "__id__": 125
+      "__id__": 127
     },
     "propertyPath": [
       "_sockets",
@@ -1694,7 +1753,7 @@
       "__id__": 8
     },
     "targetInfo": {
-      "__id__": 126
+      "__id__": 128
     }
   },
   {
@@ -1715,7 +1774,7 @@
       "__id__": 8
     },
     "sourceInfo": {
-      "__id__": 128
+      "__id__": 130
     },
     "propertyPath": [
       "_sockets",
@@ -1726,7 +1785,7 @@
       "__id__": 8
     },
     "targetInfo": {
-      "__id__": 129
+      "__id__": 131
     }
   },
   {
@@ -1747,7 +1806,7 @@
       "__id__": 8
     },
     "sourceInfo": {
-      "__id__": 131
+      "__id__": 133
     },
     "propertyPath": [
       "_sockets",
@@ -1758,7 +1817,7 @@
       "__id__": 8
     },
     "targetInfo": {
-      "__id__": 132
+      "__id__": 134
     }
   },
   {
@@ -1779,7 +1838,7 @@
       "__id__": 8
     },
     "sourceInfo": {
-      "__id__": 134
+      "__id__": 136
     },
     "propertyPath": [
       "_sockets",
@@ -1790,7 +1849,7 @@
       "__id__": 8
     },
     "targetInfo": {
-      "__id__": 135
+      "__id__": 137
     }
   },
   {
@@ -1811,7 +1870,7 @@
       "__id__": 8
     },
     "sourceInfo": {
-      "__id__": 137
+      "__id__": 139
     },
     "propertyPath": [
       "_sockets",
@@ -1822,7 +1881,7 @@
       "__id__": 8
     },
     "targetInfo": {
-      "__id__": 138
+      "__id__": 140
     }
   },
   {
@@ -1843,7 +1902,7 @@
       "__id__": 8
     },
     "sourceInfo": {
-      "__id__": 140
+      "__id__": 142
     },
     "propertyPath": [
       "_sockets",
@@ -1854,7 +1913,7 @@
       "__id__": 8
     },
     "targetInfo": {
-      "__id__": 141
+      "__id__": 143
     }
   },
   {
@@ -1875,7 +1934,7 @@
       "__id__": 8
     },
     "sourceInfo": {
-      "__id__": 143
+      "__id__": 145
     },
     "propertyPath": [
       "_sockets",
@@ -1886,7 +1945,7 @@
       "__id__": 8
     },
     "targetInfo": {
-      "__id__": 144
+      "__id__": 146
     }
   },
   {
@@ -1907,7 +1966,7 @@
       "__id__": 8
     },
     "sourceInfo": {
-      "__id__": 146
+      "__id__": 148
     },
     "propertyPath": [
       "_sockets",
@@ -1918,7 +1977,7 @@
       "__id__": 8
     },
     "targetInfo": {
-      "__id__": 147
+      "__id__": 149
     }
   },
   {
@@ -1939,7 +1998,7 @@
       "__id__": 8
     },
     "sourceInfo": {
-      "__id__": 149
+      "__id__": 151
     },
     "propertyPath": [
       "_sockets",
@@ -1950,7 +2009,7 @@
       "__id__": 8
     },
     "targetInfo": {
-      "__id__": 150
+      "__id__": 152
     }
   },
   {
@@ -1971,7 +2030,7 @@
       "__id__": 8
     },
     "sourceInfo": {
-      "__id__": 152
+      "__id__": 154
     },
     "propertyPath": [
       "_sockets",
@@ -1982,7 +2041,7 @@
       "__id__": 8
     },
     "targetInfo": {
-      "__id__": 153
+      "__id__": 155
     }
   },
   {
@@ -2003,7 +2062,7 @@
       "__id__": 8
     },
     "sourceInfo": {
-      "__id__": 155
+      "__id__": 157
     },
     "propertyPath": [
       "_sockets",
@@ -2014,7 +2073,7 @@
       "__id__": 8
     },
     "targetInfo": {
-      "__id__": 156
+      "__id__": 158
     }
   },
   {
@@ -2035,7 +2094,7 @@
       "__id__": 8
     },
     "sourceInfo": {
-      "__id__": 158
+      "__id__": 160
     },
     "propertyPath": [
       "_sockets",
@@ -2046,7 +2105,7 @@
       "__id__": 8
     },
     "targetInfo": {
-      "__id__": 159
+      "__id__": 161
     }
   },
   {
@@ -2067,7 +2126,7 @@
       "__id__": 8
     },
     "sourceInfo": {
-      "__id__": 161
+      "__id__": 163
     },
     "propertyPath": [
       "_sockets",
@@ -2078,7 +2137,7 @@
       "__id__": 8
     },
     "targetInfo": {
-      "__id__": 162
+      "__id__": 164
     }
   },
   {
@@ -2096,19 +2155,19 @@
   {
     "__type__": "cc.SceneGlobals",
     "ambient": {
-      "__id__": 164
-    },
-    "shadows": {
-      "__id__": 165
-    },
-    "_skybox": {
       "__id__": 166
     },
-    "fog": {
+    "shadows": {
       "__id__": 167
     },
-    "octree": {
+    "_skybox": {
       "__id__": 168
+    },
+    "fog": {
+      "__id__": 169
+    },
+    "octree": {
+      "__id__": 170
     }
   },
   {

@@ -21,18 +21,8 @@ export class webgl_animation_skinning_blending extends Component {
 
     start() {
         if (HTML5) {
-            const div = document.createElement('div');
-            div.id = "info"
-            div.className = "footer"
-            div.innerHTML = `
-            微信公众号 👉 <a href="https://mp.weixin.qq.com/s/-I6I6nG2Hnk6d1zqR-Gu2g" target="_blank" rel="noopener">白玉无冰</a> <br/>
-            (model from <a href="https://www.mixamo.com/" target="_blank" rel="noopener">mixamo.com</a>)<br/>
-			Note: crossfades are possible with blend weights being set to (1,0,0), (0,1,0) or (0,0,1)
-            `
-            document.body.appendChild(div)
             this.createPanel()
         }
-
         this.camera.node.lookAt(v3(0, 1, 0))
     }
 
