@@ -19,11 +19,19 @@ export class webgl_animation_skinning_blending extends Component {
     @property(SkeletonHelper)
     skeletonHelper: SkeletonHelper = null!;
 
+    private _gui: GUI
+
     start() {
         if (HTML5) {
-            this.createPanel()
+            this._gui = this.createPanel()
         }
         this.camera.node.lookAt(v3(0, 1, 0))
+    }
+
+    onDestroy() {
+        if (HTML5) {
+            this._gui.destroy()
+        }
     }
 
     private createPanel() {
@@ -279,6 +287,8 @@ export class webgl_animation_skinning_blending extends Component {
             updateWeightSliders();
             updateCrossFadeControls();
         }
+
+        return panel
 
     }
 
