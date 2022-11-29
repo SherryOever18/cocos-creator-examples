@@ -11,7 +11,12 @@ export class main extends Component {
 
     private _homeButton: Node
 
+    private _loading: Node
+
     start() {
+        this._loading = this.canvas.node.getChildByName("Loading")
+        this._loading.active = false;
+
         director.addPersistRootNode(this.canvas.node)
         director.addPersistRootNode(this.node)
         const scenesConfigs: string[] = []
@@ -51,9 +56,17 @@ export class main extends Component {
     }
 
     private gotoScene(name: string) {
-        director.loadScene(name, () => {
-            this._homeButton.active = true;
-            this._scrollView.node.active = false
+        this._loading.active = true;
+        this._scrollView.node.active = false
+
+        director.loadScene(name, (error: null | Error, scene?) => {
+            if (error) {
+                this._scrollView.node.active = true
+                console.error(error)
+            } else {
+                this._homeButton.active = true;
+            }
+            this._loading.active = false;
         })
     }
 
