@@ -28,16 +28,19 @@
       },
       {
         "__id__": 31
+      },
+      {
+        "__id__": 33
       }
     ],
     "_active": true,
     "_components": [],
     "_prefab": {
-      "__id__": 33
+      "__id__": 35
     },
     "autoReleaseAssets": false,
     "_globals": {
-      "__id__": 34
+      "__id__": 36
     },
     "_id": "ae3a2b82-1ee1-408d-b422-41133a628dad"
   },
@@ -581,7 +584,7 @@
   },
   {
     "__type__": "cc.Node",
-    "_name": "webgl_animation_skinning_additive_blending",
+    "_name": "FooterInfoDivHelper",
     "_objFlags": 0,
     "_parent": {
       "__id__": 1
@@ -620,6 +623,62 @@
       "y": 0,
       "z": 0
     },
+    "_id": "89k5m4erZIFp9M6BjFpWLP"
+  },
+  {
+    "__type__": "17ea9rDzrtECLriSbDEmaQx",
+    "_name": "",
+    "_objFlags": 0,
+    "node": {
+      "__id__": 31
+    },
+    "_enabled": true,
+    "__prefab": null,
+    "codeAddr": "https://github.com/baiyuwubing/cocos-creator-examples/tree/3.6",
+    "otherInfo": "- Skeletal Additive Animation Blending\n\t\t\t(model from <a href=\"https://www.mixamo.com/\" target=\"_blank\" rel=\"noopener\">mixamo.com</a>)<br/>",
+    "_id": "d0VeL3rNFE5InFAMqbdh8T"
+  },
+  {
+    "__type__": "cc.Node",
+    "_name": "webgl_animation_skinning_additive_blending",
+    "_objFlags": 0,
+    "_parent": {
+      "__id__": 1
+    },
+    "_children": [],
+    "_active": true,
+    "_components": [
+      {
+        "__id__": 34
+      }
+    ],
+    "_prefab": null,
+    "_lpos": {
+      "__type__": "cc.Vec3",
+      "x": 0,
+      "y": 0,
+      "z": 0
+    },
+    "_lrot": {
+      "__type__": "cc.Quat",
+      "x": 0,
+      "y": 0,
+      "z": 0,
+      "w": 1
+    },
+    "_lscale": {
+      "__type__": "cc.Vec3",
+      "x": 1,
+      "y": 1,
+      "z": 1
+    },
+    "_layer": 1073741824,
+    "_euler": {
+      "__type__": "cc.Vec3",
+      "x": 0,
+      "y": 0,
+      "z": 0
+    },
     "_id": "24DjXID5hNkrvuG3iRP8VA"
   },
   {
@@ -627,7 +686,7 @@
     "_name": "",
     "_objFlags": 0,
     "node": {
-      "__id__": 31
+      "__id__": 33
     },
     "_enabled": true,
     "__prefab": null,
@@ -648,19 +707,19 @@
   {
     "__type__": "cc.SceneGlobals",
     "ambient": {
-      "__id__": 35
-    },
-    "shadows": {
-      "__id__": 36
-    },
-    "_skybox": {
       "__id__": 37
     },
-    "fog": {
+    "shadows": {
       "__id__": 38
     },
-    "octree": {
+    "_skybox": {
       "__id__": 39
+    },
+    "fog": {
+      "__id__": 40
+    },
+    "octree": {
+      "__id__": 41
     }
   },
   {
