@@ -1,4 +1,4 @@
-import { _decorator, Component, Node, SkinnedMeshRenderer, log, Line, SkeletalAnimation, Graphics, UITransform, Camera, v3, Color, gfx, GradientRange } from 'cc';
+import { _decorator, Component, Node, SkinnedMeshRenderer, Line, SkeletalAnimation, Color, gfx, GradientRange, log } from 'cc';
 const { ccclass, property } = _decorator;
 
 @ccclass('SkeletonHelper')
@@ -11,6 +11,7 @@ export class SkeletonHelper extends Component {
     private lines: Line[] = []
 
     start() {
+        log('欢迎关注微信公众号【白玉无冰】 https://mp.weixin.qq.com/s/-I6I6nG2Hnk6d1zqR-Gu2g')
         const skeletalAnimation = this.model.getComponent(SkeletalAnimation)
         skeletalAnimation.useBakedAnimation = false; // maybe todo
         const skinMeshRds = this.model.getComponentsInChildren(SkinnedMeshRenderer)
@@ -19,14 +20,10 @@ export class SkeletonHelper extends Component {
             element.skeleton.joints.forEach((v) => {
                 const node = skinningRoot.getChildByPath(v)
                 node['isBone'] = true;
-                // node['skeletalAnimationSocket'] = skeletalAnimation.createSocket(v)
             })
         });
 
-
         const bones = this.getBoneList(this.model);
-        bones.forEach(element => {
-        });
         this.bones = bones;
 
         for (let i = 0; i < bones.length; i++) {
@@ -44,9 +41,7 @@ export class SkeletonHelper extends Component {
                 line.positions = [bone.worldPosition, bone.parent.worldPosition] as never[]
                 this.lines.push(line)
             }
-
         }
-
     }
 
     showSkeleton(show: boolean) {
@@ -66,10 +61,6 @@ export class SkeletonHelper extends Component {
         return boneList;
     }
 
-    onDestroy() {
-
-    }
-
     lateUpdate(deltaTime: number) {
         let lineIndex = 0;
         for (let i = 0; i < this.bones.length; i++) {
@@ -77,11 +68,7 @@ export class SkeletonHelper extends Component {
             if (bone.parent && bone.parent['isBone']) {
                 const line = this.lines[lineIndex++];
                 line.positions = [bone.worldPosition, bone.parent.worldPosition] as never[]
-                // line.positions = [bone['skeletalAnimationSocket'].worldPosition, bone.parent['skeletalAnimationSocket'].worldPosition] as never[]
             }
         }
-
     }
 }
-
-
