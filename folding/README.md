@@ -18,16 +18,20 @@ qq 交流群: 859642112
 
 ##  折叠效果 
 
-cocos creator v3.0.0 
+cocos creator v3.6.1 
 
+2d折纸：
 https://mp.weixin.qq.com/s/1guPBbKkG6iWCcWa_uz6CQ
+
+3d折纸：
+https://mp.weixin.qq.com/s/iiD9IVNi0p3jdZYVCx_KBw
 
 http://store.cocos.com/app/detail/2844
 
 
 
 ## 论坛讨论贴    
-[https://forum.cocos.org/t/topic/112045](https://mp.weixin.qq.com/s/WUpppo1Db_pQTlaqpRQaTw)
+[https://forum.cocos.org/t/topic/112045](https://forum.cocos.org/t/topic/112045)
 
 
 ## 其他商店链接  
@@ -36,6 +40,9 @@ http://store.cocos.com/app/detail/2844
 [转向行为Demo(免费)](https://store.cocos.com/app/detail/2893)  
 [渐变色文字(免费)](https://store.cocos.com/app/detail/2950)  
 [折纸效果(100分)](http://store.cocos.com/app/detail/2844)
+[goalkeeper](https://store.cocos.com/app/detail/4227)
+
+
 
 ```ts
 /*
